@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>东夷文化博物馆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="swiper-4.3.5/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script>
+        !new function() {
+            var a = this;
+            a.width = 750, a.fontSize = 100, a.widthProportion = function() {
+                var b = (document.body && document.body.clientWidth || document.getElementsByTagName("html")[0].offsetWidth) / a.width;
+                return b > 1 ? 1 : b
+            }, a.changePage = function() {
+                document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + a.widthProportion() * a.fontSize + "px !important")
+            }, a.changePage(), window.addEventListener("resize", function() {
+                a.changePage()
+            }, !1)
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide bowuguan">
+                <img src="img/back.png" alt="" class="back">
+                <img src="img/back1.png" alt="" id='back1' class="back1">
+                <img src="img/back2.png" alt="" id='back2' class="back2">
+                <img src="img/title.png" alt="" id='title' class="title">
+                <div class="content">
+                    <p>临沂东夷文化博物馆位于国家级临沂经济技术开发区西北部皇山脚下，山环水抱，风景优美，是目前国内首家以东夷文化为主题的国有博物馆，座落在国家AAAA级旅游景区——东夷文化园内。</p>
+                    <p>临沂东夷文化博物馆由国内顶尖规划设计院——中国建筑设计研究院规划设计，内设八大展厅和两大影院，从史前时代到秦之前的东夷文化历史展厅、考古展厅、习俗展厅、农业展厅、工艺展厅、手工业展厅、社会展厅及夷夏融合厅。这些精彩的篇章，让史前时代的东夷文明以文物陈列的方式得到了更好的呈现。</p>
+                    <p>迄今，临沂东夷文化博物馆共收藏文物850余件。藏品多来自当地的考古发掘及民间征集，有着典型的地方特色和较高的研究价值。其中，尤以新石器时代的陶器、石器最为丰富：“薄如纸，硬如瓷，明如镜，黑如漆”的蛋壳陶高柄杯；造型别致的陶瓷；磨制精美的石钺、石铲、双孔初刀。其文化、历史价值为研究中国东夷文化提供了大最的实物资料。</p>
+                    <p>东夷文明源远流长，东夷文化博物馆是带领大家追溯历史长河，传承东夷文明的一个窗口，既是集收藏、陈列、研究、展示和学术交流等多功能为一体的历史文化博物馆，也是人们接受历史传统救育的生动场所。</p>
+                    <p>领悟先人的生活智慧，感受文化带来的巨大张力，东夷文化博物馆就是一本浓缩的历史，带您回到历史的源头，细细品味灿烂辉煌的东夷文化，一起传承梦想和情怀。</p>
+                </div>
+            </div>
+            <div class="swiper-slide damei">
+                <img src="img/back3.png" alt="" class="back3">
+                <img src="img/back4.png" alt="" class="back4">
+                <img src="img/title1.png" alt="" class="title1">
+                <img src="img/title2.png" alt="" class="title2">
+                <div class="dameiysisong">
+                    <p>东夷文化博物馆以《大美夷颂》大型互动跨平台4D裸眼灯光秀理念设计；运用3D裸眼建筑投影、舞台电脑灯、雾森、气爆、水喷、影像互动、声音特效等技术手段给市民打造一场身临其境、梦幻、震撼的视觉与听觉东夷文化灯光秀。灯光秀分为五幕，分别为沂蒙山水、上古传说、东夷文明、沂蒙精神、幸福临沂，风格强调多元文化融合、娱乐与趣味性。</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <script src="swiper-4.3.5/dist/js/swiper.min.js"></script>
+    <script src="jquery.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            wx.miniProgram.navigateBack({
+                delta: 1
+            })
+        })
+        window.onload = function() {
+            var swiper = new Swiper('.swiper-container', {
+                direction: 'vertical',
+                resistanceRatio: 0,
+                shortSwipes: true,
+                effect: 'coverflow',
+                coverflowEffect: {},
+                observer: true, //修改swiper自己或子元素时，自动初始化swiper
+                observeParents: true, //修改swiper的父元素时，自动初始化swiper
+            });
+            var startScroll, touchStart, touchCurrent;
+            swiper.slides.on('touchstart', function(e) {
+                startScroll = this.scrollTop;
+                touchStart = e.targetTouches[0].pageY;
+            }, true);
+            swiper.slides.on('touchmove', function(e) {
+                touchCurrent = e.targetTouches[0].pageY;
+                var touchesDiff = touchCurrent - touchStart;
+                var slide = this;
+                var onlyScrolling =
+                    (slide.scrollHeight > slide.offsetHeight) && //allow only when slide is scrollable
+                    (
+                        (touchesDiff < 0 && startScroll === 0) || //start from top edge to scroll bottom
+                        (touchesDiff > 0 && startScroll === (slide.scrollHeight - slide.offsetHeight)) || //start from bottom edge to scroll top
+                        (startScroll > 0 && startScroll < (slide.scrollHeight - slide.offsetHeight)) //start from the middle
+                    );
+                if (onlyScrolling) {
+                    e.stopPropagation();
+                }
+            }, true);
+
+
+
+            $('.back1').fadeTo("slow", 1);
+            $(".damei").on("touchstart", function(e) {
+                startX = e.originalEvent.changedTouches[0].pageX,
+                    startY = e.originalEvent.changedTouches[0].pageY;
+                $("#title").css("opacity", "0");
+                $("#back1").css("opacity", "0");
+                $("#back2").css("opacity", "0");
+                $(".content").css("opacity", "0")
+            });
+            $(".damei").on("touchend", function(e) {
+                moveEndX = e.originalEvent.changedTouches[0].pageX,
+                    moveEndY = e.originalEvent.changedTouches[0].pageY,
+                    X = moveEndX - startX,
+                    Y = moveEndY - startY;
+                if (Y > 0) {
+                    $(".content").css("opacity", "1");
+                    $(".title").removeClass('title');
+                    $(".back1").removeClass('back1');
+                    $(".back2").removeClass('back2');
+                    setTimeout(function() {
+                        $("#back1").addClass("back1").css("opacity", "1");
+                        $("#back2").addClass("back2").css("opacity", "1");
+                        $("#title").addClass("title").css("opacity", "1");
+                    }, 500)
+                }
+            });
+            $(".bowuguan").on("touchstart", function(e) {
+                startX1 = e.originalEvent.changedTouches[0].pageX,
+                    startY1 = e.originalEvent.changedTouches[0].pageY;
+                $(".dameiysisong").css({
+                    "opacity": "0",
+                    "-webkit-animation-play-state": "paused"
+                })
+                $('.title2').css({
+                    "opacity": "0",
+                    "-webkit-animation-play-state": "paused"
+                })
+                $('.title1').css({
+                    "opacity": "0",
+                    "-webkit-animation-play-state": "paused"
+                })
+                $('.back4').css("-webkit-animation-play-state", "paused")
+            });
+            $(".bowuguan").on("touchend", function(e) {
+                moveEndX1 = e.originalEvent.changedTouches[0].pageX,
+                    moveEndY1 = e.originalEvent.changedTouches[0].pageY,
+                    X1 = moveEndX1 - startX1,
+                    Y1 = moveEndY1 - startY1;
+                if (Y1 < 0) {
+                    $('.title2').css({
+                        'opacity': '1',
+                        '-webkit-animation': ''
+                    });
+                    $('.title1').css({
+                        'opacity': '1',
+                        '-webkit-animation': ''
+                    });
+                    $('.back4').css({
+                        'opacity': '1',
+                        '-webkit-animation': ''
+                    });
+                    $('.dameiysisong').css({
+                        'opacity': '1',
+                        '-webkit-animation': ''
+                    });
+
+                    setTimeout(function() {
+                        $('.title2').css('-webkit-animation', "slider-init-title2 2.5s linear forwards");
+                        $('.title1').css('-webkit-animation', "slider-init-title1 2.5s linear forwards", );
+                        $(".dameiysisong").css('-webkit-animation', 'slider-init-content 2s linear forwards');
+                        $(".back4").css('-webkit-animation', "slider-init-back 3.5s linear forwards");
+                    }, 500)
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
